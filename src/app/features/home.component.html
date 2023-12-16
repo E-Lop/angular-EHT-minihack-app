@@ -1,0 +1,36 @@
+<h1 class="text-center">Vota la tua azienda preferita!</h1>
+
+<div class="d-flex flex-row flex-wrap gap-3 justify-content-evenly mt-3">
+  <div
+    class="card p-2"
+    style="width: 18rem"
+    *ngFor="let azienda of companyService.loadedCompanies"
+  >
+    <img [src]="azienda.logo" class="card-img-top" [alt]="azienda.name" />
+    <div class="card-body">
+      <h5 class="card-title">{{ azienda.name }}</h5>
+      <div class="mt-1">Settori d'interesse:</div>
+      <p class="card-text mt-1 fw-lighter fst-italic">
+        {{ azienda.target }}
+      </p>
+      <div class="d-flex align-items-center">
+        <a
+          href="#"
+          class="btn btn-primary me-2"
+          [routerLink]="['/details', azienda.id]"
+          >Dettegli</a
+        >
+        <span *ngIf="azienda.preferred == null"
+          ><mat-icon (click)="makePreferred(azienda.id)"
+            >favorite_border</mat-icon
+          ></span
+        >
+        <span *ngIf="azienda.preferred == true"
+          ><mat-icon (click)="unmakePreferred(azienda.id)"
+            >favorite</mat-icon
+          ></span
+        >
+      </div>
+    </div>
+  </div>
+</div>

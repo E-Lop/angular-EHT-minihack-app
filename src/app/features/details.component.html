@@ -1,0 +1,15 @@
+<div class="container d-flex">
+  <div class="card p-2">
+    <img [src]="company.logo" class="card-img-top" [alt]="company.name" />
+    <div class="card-body">
+      <h5 class="card-title">{{ company.name }}</h5>
+      <div class="mt-1">Settori d'interesse:</div>
+      <p class="card-text mt-1 fw-lighter fst-italic">{{ company.target }}</p>
+      <p>{{ company.description }}</p>
+      <div *ngFor="let image of company.images">
+        <img [src]="image" class="card-img-top" />
+      </div>
+      <button class="btn btn-primary mt-2" routerLink="/home">Indietro</button>
+    </div>
+  </div>
+</div>
